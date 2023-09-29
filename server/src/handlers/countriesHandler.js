@@ -15,10 +15,13 @@ const getAllCountries = async (req, res)=>{
 const getNameCountry = async(req, res)=>{
     try {
         const {name} = req.query;
-        if(!name){return res.status(400).json({message: "Debes proporcionar un nombre de país"})}
+        if(!name){
+            let all = await allCountries();
+            return res.json(all);
+        }
 
         let country = await countryByName(name);
-        if(!country){return res.status(404).json({
+        if(!country.length){return res.status(404).json({
             message: "No se encontraron países que coincidan con el nombre proporcionado"})}
         
         return res.json(country);
