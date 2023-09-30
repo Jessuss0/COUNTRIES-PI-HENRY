@@ -1,7 +1,11 @@
+import { useParams } from "react-router-dom";
+
 export default function Detail(props){
+    const { id } = useParams();
+
     return(
         <div>
-            <h2>DETALLES DE PAISES</h2>
+            <h2>DETALLES DEL PAIS: {id}</h2>
         </div>
     )
 }

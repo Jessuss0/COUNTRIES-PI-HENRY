@@ -1,7 +1,15 @@
-export default function Card(props){
+import { Link } from "react-router-dom";
+
+export default function Card({id, image, name, continent}){
     return(
         <div>
-            <h2>RENDERIZA LAS CARDS</h2>
+            <Link to={`/detail/${id}`}>
+            <div>
+            <h2>{name}</h2>
+            <img src={image} alt={name} />
+            <h2>{continent}</h2>
+            </div>
+            </Link>
         </div>
     )
 }
