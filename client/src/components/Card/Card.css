@@ -1,0 +1,37 @@
+.card-container {
+    margin: 10px;
+  }
+  
+  .card-link {
+    text-decoration: none;
+    color: inherit; 
+  }
+  
+  .card {
+    width: 300px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    max-height: 350px;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease; /* Agregamos una transición para suavizar el efecto */
+  }
+
+  .card:hover {
+  transform: scale(1.2); /* Al pasar el cursor, agranda un 10% */
+}
+  
+.card-image img {
+  width: 100%;
+  height: auto;
+  max-height: 160px; /* Ajusta según tu preferencia */
+  border: 2px solid #000; /* Agrega un borde negro de 2 píxeles */
+  border-radius: 4px;
+}
+  
+  .card-title,
+.card-continent {
+  margin: 16px 0;
+  color: #333;
+}

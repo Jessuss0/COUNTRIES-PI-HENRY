@@ -5,7 +5,7 @@ export default function Landing(props){
     
     return(
         <div>
-            <h1>Welcome to COUNTRIES PI</h1>
+            <h1>Welcome to COUNTRIES</h1>
             <button onClick={()=> navigate("/home")}>Comenzar!</button>
         </div>
     )

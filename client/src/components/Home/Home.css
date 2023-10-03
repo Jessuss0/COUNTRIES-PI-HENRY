@@ -1,0 +1,33 @@
+.home-container {
+  background: linear-gradient(to left, #000000, #c26801); 
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination-button {
+    background-color: #ec8106; 
+    color: white; 
+    padding: 10px 20px; 
+    margin: 0 5px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+}
+
+.pagination-button:hover {
+    background-color: #073dec; 
+}
+
+.pagination-number {
+  margin: 0 5px; /* Margen entre números de página */
+  cursor: pointer; /* Muestra el cursor como puntero al pasar sobre el número de página */
+}

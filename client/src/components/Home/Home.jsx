@@ -1,43 +1,60 @@
-import Card from "../Card/Card";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { allCountries } from "../../redux/actions";
-import axios from "axios";
+import Cards from "../Cards/Cards";
+import "./Home.css";
 
-export default function Home(props){
-    // const countries = useSelector((state)=> state.allCountries);
-    const dispatch = useDispatch();
+export default function Home(props) {
+  const countries = useSelector((state) => state.Countries);
+  const dispatch = useDispatch();
+  const [currentPage, setCurrentPage] = useState(1);
+  const elementosPorPagina = 10;
 
-    // const loadCountries = async()=>{
-    //     if(!countries.length){
-    //         await dispatch(allCountries);
-    //     }
-    // };
-    const [countries, setCountries] = useState([]);
+  const indexOfLastElement = currentPage * elementosPorPagina;
+  const indexOfFirstElement = indexOfLastElement - elementosPorPagina;
+  const currentElements = countries?.slice(indexOfFirstElement, indexOfLastElement);
 
-    const loadC = async()=>{
-        const {data} = await axios("http://localhost:3001/countries")
-       setCountries(data)
-       dispatch(allCountries);
+  const totalPages = Math.ceil((countries?.length || 0) / elementosPorPagina);
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
     }
+  };
 
-    useEffect(()=>{
-        loadC();
-        dispatch(allCountries);
-    },[]);
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
 
-    return(
-        <div>
-            {countries?.map(country=>{
-                return <Card
-                key={country.id}
-                id={country.id}
-                image= {country.image}
-                name= {country.name}
-                continent= {country.continent}/>
-            })}
-        </div>
-    )
+  const loadCountries = async () => {
+    if (!countries.length) {
+      await dispatch(allCountries());
+    }
+  };
+
+  useEffect(() => {
+    loadCountries();
+  }, []);
+
+  const next = "NEXT >"
+  const prev = "< PREV"
+  const text = currentPage + " of 25";
+
+  return (
+    <div className="home-container">
+      <Cards countries={currentElements} />
+
+      <div  className="pagination">
+      <button onClick={handlePrevPage} className="pagination-button">{prev}</button>
+      <div className="pagination-number">
+      <p>{text}</p>
+      </div>
+      <button onClick={handleNextPage} className="pagination-button">{next}</button>
+      </div>
+    </div>
+  );
 }
 
 
