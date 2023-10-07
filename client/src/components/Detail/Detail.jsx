@@ -11,7 +11,7 @@ export default function Detail(props){
     useEffect(()=>{
         dispatch(idCountry(id))
     },[])
-
+//RECORDATORIO: AGREGAR UN BOTON BACK AL HOME
     return(
         <div>
              {Country && <div>

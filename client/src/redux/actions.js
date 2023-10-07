@@ -1,4 +1,4 @@
-import { SEARCH_COUNTRY, ADD_ALL_COUNTRIES, ADD_ID_COUNTRY, RESET } from "./action.types";
+import { SEARCH_COUNTRY, ADD_ALL_COUNTRIES, ADD_ID_COUNTRY, RESET, ADD_ACTIVITY } from "./action.types";
 import axios from 'axios';
 
 export const allCountries = ()=>{
@@ -56,6 +56,21 @@ export const reset = ()=>{
             })
         } catch (error) {
             alert(error.response.data.message);
+        }
+    }
+}
+
+export const addActivity = (activity)=>{
+    const endPoint = "http://localhost:3001/activities"
+    return async(dispatch)=>{
+        try {
+            const response = await axios.post(endPoint, activity)
+            return dispatch({
+                type:ADD_ACTIVITY,
+                payload: response.data
+            })
+        } catch (error) {
+            alert(error.response.data);
         }
     }
 }

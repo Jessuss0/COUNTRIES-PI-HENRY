@@ -15,10 +15,10 @@ const getAllActivities = async(req, res)=>{
 const createActivities = async(req, res)=>{
     const { name, difficulty, duration, season, idCountry} = req.body;
     try {
-        if(!name || !difficulty || !duration || !season){res.status(400).json("Faltan datos estupido")};
+        if(!name || !difficulty || !duration || !season || !idCountry){return res.status(400).json("Faltan datos")};
 
         let activity = await activityPost({name, difficulty, duration, season, idCountry});
-        res.json(activity);
+        return res.json(activity);
     } catch (error) {
         res.status(500).json({error: error.message});
     }

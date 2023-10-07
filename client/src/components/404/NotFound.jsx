@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default function NotFound404(props){
     return(
         <div>

@@ -4,7 +4,7 @@ import "./SearchBar.css"
 import { useDispatch} from 'react-redux';
 import { nameCountry, reset } from "../../redux/actions";
 
-export default function Nav(props){
+export default function Nav({handlePage}){
     const navigate = useNavigate();
     const dispatch = useDispatch();
     
@@ -17,6 +17,7 @@ export default function Nav(props){
     const handleSearch = (event)=>{
       dispatch(nameCountry(name))
       setName("");
+      handlePage();
     }
 
     const base = ()=>{
@@ -29,6 +30,7 @@ export default function Nav(props){
           <div className="left">
             <button onClick={base}>CounTri3s</button>
           </div>
+          <button onClick={()=> navigate("/activities")}>ACTIVITIES</button>
           <div className="right">
             <input type="search" onChange={handleChange} value={name} placeholder="Busca un país..." />
             <button onClick={handleSearch}>Buscar</button>

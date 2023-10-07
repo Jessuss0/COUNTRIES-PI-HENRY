@@ -8,7 +8,6 @@ const activityPost = async({name, difficulty, duration, season, idCountry})=>{
     else {
           await act.setCountries(idCountry);
         }
-
     return act
 }
 

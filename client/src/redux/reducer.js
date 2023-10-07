@@ -1,9 +1,10 @@
-import { SEARCH_COUNTRY, ADD_ALL_COUNTRIES, ADD_ID_COUNTRY, RESET } from "./action.types";
+import { SEARCH_COUNTRY, ADD_ALL_COUNTRIES, ADD_ID_COUNTRY, RESET, ADD_ACTIVITY, } from "./action.types";
 
 const initialState = {
     Countries: [],
     allCountries: [],
-    idCountry: []
+    idCountry: [],
+    activityPost: [],
 }
 
 const rootReducer = (state = initialState, action)=>{
@@ -19,6 +20,9 @@ const rootReducer = (state = initialState, action)=>{
         
         case RESET:
             return{...state, Countries: state.allCountries}
+        
+        case ADD_ACTIVITY:
+            return{...state, activityPost: action.payload}
 
         default:
             return{...state}
