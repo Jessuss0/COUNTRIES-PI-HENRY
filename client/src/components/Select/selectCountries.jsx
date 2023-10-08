@@ -11,7 +11,7 @@ const SelectCountries = ({name, onChange, number, state, countries, onDelete}) =
       ))}
     </select>
 
-    {state.idCountry[number] && (
+    {state.idCountry[number] && number > 0 && (
       <button onClick={() => onDelete(number)}>X</button>
     )}
   </div>

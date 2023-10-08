@@ -28,7 +28,7 @@ export default function Nav({handlePage}){
      return (
         <div className="navbar">
           <div className="left">
-            <button onClick={base}>CounTri3s</button>
+            <button onClick={base}>COUNTRIES</button>
           </div>
           <button onClick={()=> navigate("/activities")}>ACTIVITIES</button>
           <div className="right">

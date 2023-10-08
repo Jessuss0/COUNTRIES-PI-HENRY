@@ -38,11 +38,11 @@ function App() {
 
   return (
     <div >
-      {location.pathname !== "/" && location.pathname !== "/activities" && <Nav handlePage={handlePage}/>}
+      {location.pathname !== "/" && location.pathname !== "/activities" && !location.pathname.includes("detail") && <Nav handlePage={handlePage}/>}
       <Routes>
 
         <Route exact path="/" element={<Landing/>}/>
-        <Route exact path="/home" element={<Home handleNextPage={handleNextPage} handlePrevPage={handlePrevPage} currentPage={currentPage} currentElements={currentElements}/>}/>
+        <Route exact path="/home" element={<Home handlePage={handlePage} handleNextPage={handleNextPage} handlePrevPage={handlePrevPage} currentPage={currentPage} currentElements={currentElements} totalPages={totalPages}/>}/>
         <Route exact path="/detail/:id" element={<Detail/>}/>
         <Route exact path="/activities" element={<Form/>}/>
 

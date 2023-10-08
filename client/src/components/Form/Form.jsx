@@ -76,6 +76,10 @@ export default function Form(props) {
         refresh();
     }, []);
 
+    useEffect(()=>{
+        console.log(activity)
+    },[handleChange])
+
     const handleSubmit = (event) => {
         event.preventDefault();
         dispatch(addActivity(activity));
@@ -102,7 +106,7 @@ export default function Form(props) {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            <form >
                 <label htmlFor="name">name:</label>
                 <input type="text" name="name" key={"name"} value={activity.name} onChange={handleFieldChange} />
                 {errors.name && <p style={{ color: 'red' }}>{errors.name}</p>}
@@ -125,7 +129,7 @@ export default function Form(props) {
                 <label htmlFor="Countries">(Optional)Country 3:</label>
                 <SelectCountries name="idCountry" onChange={handleCountry} number={2} state={activity} countries={sortedCountries} onDelete={onDelete}/>
                 
-                <button type="submit" disabled={!isFormValid}>Create activity</button>
+                <button onClick={handleSubmit} disabled={!isFormValid}>Create activity</button>
                 {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
             </form>
         </div>

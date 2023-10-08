@@ -1,19 +1,21 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { idCountry } from "../../redux/actions";
 
 export default function Detail(props){
     const { id } = useParams();
     const Country = useSelector((state)=> state.idCountry);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(()=>{
         dispatch(idCountry(id))
     },[])
-//RECORDATORIO: AGREGAR UN BOTON BACK AL HOME
+
     return(
         <div>
+            <button onClick={()=>{navigate("/home")}}>Back</button>
              {Country && <div>
                 <h2>{Country.name}</h2>
                 <img src={Country.image} alt={Country.name} />
