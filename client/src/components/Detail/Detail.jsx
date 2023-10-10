@@ -11,11 +11,12 @@ export default function Detail(props){
 
     useEffect(()=>{
         dispatch(idCountry(id))
+        console.log(Country)
     },[])
 
     return(
         <div>
-            <button onClick={()=>{navigate("/home")}}>Back</button>
+            <button onClick={()=>{navigate("/home")}} className="pagination-button">Back</button>
              {Country && <div>
                 <h2>{Country.name}</h2>
                 <img src={Country.image} alt={Country.name} />

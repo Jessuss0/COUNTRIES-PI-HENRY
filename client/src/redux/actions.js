@@ -1,4 +1,4 @@
-import { SEARCH_COUNTRY, ADD_ALL_COUNTRIES, ADD_ID_COUNTRY, RESET, ADD_ACTIVITY, FILTER_CONTINENTS, FILTER_ACTIVITY, ORDER_ALPHABETICAL, ORDER_POPULATION } from "./action.types";
+import { SEARCH_COUNTRY, ADD_ALL_COUNTRIES, ADD_ID_COUNTRY, RESET, ADD_ACTIVITY, FILTER_CONTINENTS, FILTER_ACTIVITY, ORDER_ALPHABETICAL, ORDER_POPULATION, GET_ALL_ACTIVITIES } from "./action.types";
 import axios from 'axios';
 
 export const allCountries = ()=>{
@@ -12,6 +12,22 @@ export const allCountries = ()=>{
             })
         } catch (error) {
             alert(error.response.data.message);
+        }
+    }
+}
+
+export const allActivities = ()=>{
+
+    return async (dispatch)=>{
+        try {
+            const {data} = await axios("http://localhost:3001/activities")
+            console.log(data)
+            return dispatch({
+                type: GET_ALL_ACTIVITIES,
+                payload: data
+            })
+        } catch (error) {
+            console.log(error);
         }
     }
 }
@@ -87,6 +103,23 @@ export const filtContinent = (continent)=>{
     }
 }
 
+export const filtActivity = (id)=>{
+    const endPoint = "http://localhost:3001/activities/" + id;
+    return async (dispatch)=>{
+        try {
+            const {data} = await axios(endPoint);
+            console.log(data.Countries)
+            return dispatch({
+                type: FILTER_ACTIVITY,
+                payload: data.Countries
+            })
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+
+}
+
 export const OrderAlphabetical = (order)=>{
     return async (dispatch)=>{
         try {
@@ -112,3 +145,4 @@ export const OrderPopulation = (order)=>{
         }
     }
 }
+

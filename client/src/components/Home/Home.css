@@ -1,5 +1,5 @@
 .home-container {
-  background: linear-gradient(to left, #000000, #c26801); 
+  background: linear-gradient(to left, #000000, #f78401); 
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -28,6 +28,21 @@
 }
 
 .pagination-number {
-  margin: 0 5px; /* Margen entre números de página */
-  cursor: pointer; /* Muestra el cursor como puntero al pasar sobre el número de página */
+  margin: 0 5px;
+  cursor: pointer;
+}
+.selects-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 20px;
+  margin-top: 60px;
+}
+
+.mi-select {
+  width: 200px;
+  height: 40px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
 }

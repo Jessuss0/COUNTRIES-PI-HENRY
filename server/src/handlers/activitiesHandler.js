@@ -1,5 +1,6 @@
 const activityPost = require("../controllers/postActivity");
 const allActivities = require("../controllers/getAllActivities");
+const idActivity = require("../controllers/idActivity");
 
 const getAllActivities = async(req, res)=>{
     try {
@@ -24,7 +25,21 @@ const createActivities = async(req, res)=>{
     }
 }
 
+const getActivityById = async(req,res)=>{
+    try {
+        const {id} = req.params;
+        if(!id){return res.status(400).json({message: "Falta un id"})}
+
+        let response = await idActivity(id);
+
+        return res.json(response);
+    } catch (error) {
+        res.status(500).json({error: error.message})
+    }
+};
+
 module.exports = {
     getAllActivities,
     createActivities,
+    getActivityById
 }

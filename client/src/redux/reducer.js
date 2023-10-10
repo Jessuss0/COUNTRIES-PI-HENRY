@@ -1,10 +1,14 @@
-import { SEARCH_COUNTRY, ADD_ALL_COUNTRIES, ADD_ID_COUNTRY, RESET, ADD_ACTIVITY, FILTER_CONTINENTS, ORDER_ALPHABETICAL, ORDER_POPULATION } from "./action.types";
+import { SEARCH_COUNTRY, ADD_ALL_COUNTRIES, ADD_ID_COUNTRY, RESET, ADD_ACTIVITY,
+     FILTER_CONTINENTS, ORDER_ALPHABETICAL, ORDER_POPULATION, GET_ALL_ACTIVITIES, FILTER_ACTIVITY } from "./action.types";
 
 const initialState = {
     Countries: [],
+    Activities: [],
     allCountries: [],
+    copiaCountries: [],
     idCountry: [],
     activityPost: [],
+
 }
 
 const rootReducer = (state = initialState, action)=>{
@@ -12,22 +16,30 @@ const rootReducer = (state = initialState, action)=>{
         case ADD_ALL_COUNTRIES:
             return{...state, Countries: action.payload, allCountries: action.payload} 
 
+        case GET_ALL_ACTIVITIES:
+            return{...state, Activities: action.payload}
+
         case ADD_ID_COUNTRY:
             return{...state, idCountry: action.payload}
 
         case SEARCH_COUNTRY:
-            return {...state, Countries: action.payload}
+            return {...state, Countries: action.payload, copiaCountries: action.payload}
         
         case RESET:
-            return{...state, Countries: state.allCountries}
+            return{...state, Countries: state.allCountries, copiaCountries: []}
         
         case ADD_ACTIVITY:
             return{...state, activityPost: action.payload}
         
         case FILTER_CONTINENTS:
-            let copia = [...state.allCountries]
+            let copia1 = state.copiaCountries.length ? [...state.copiaCountries] : [...state.allCountries]
+            let copia = copia1
+            
             let filtrado = copia.filter((country) => country.continent === action.payload);
-            return {...state, Countries: filtrado}
+            return {...state, Countries: filtrado, copiaCountries: copia1}
+
+        case FILTER_ACTIVITY:
+            return {...state, Countries: action.payload, copiaCountries: action.payload}
 
         case ORDER_ALPHABETICAL:
             let copia2 = [...state.Countries]

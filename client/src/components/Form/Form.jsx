@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { allCountries, addActivity } from "../../redux/actions";
+import { useNavigate } from "react-router-dom"
 import validation from "../../SupportFunctions/validation";
-import Select from "../Select/Select";
-import SelectCountries from "../Select/selectCountries";
+import Select from "../Select/select1/Select";
+import SelectCountries from "../Select/selectCountries/selectCountries";
+import "./Form.css"
 
 export default function Form(props) {
     const countries = useSelector((state) => state.allCountries);
     const dispatch = useDispatch();
     const sortedCountries = [...countries].sort((a, b) => a.name.localeCompare(b.name));
+    const navigate = useNavigate();
 
     const [activity, setActivity] = useState({
         name: "",
@@ -21,7 +24,8 @@ export default function Form(props) {
     const [isFormValid, setIsFormValid] = useState(false);
     const [errors, setErrors] = useState({});
     const [successMessage, setSuccessMessage] = useState("");
-
+    const [extraCountries, setExtraCountries] = useState(1);
+    
     const handleFieldChange = (event) => {
         handleChange(event);
         updateFormValidity();
@@ -52,7 +56,6 @@ export default function Form(props) {
     const handleCountry = (event, index) => {
         const selectedCountry = event.target.value;
 
-        // Verificar que el país no haya sido seleccionado en otro select
         const isCountrySelected = activity.idCountry.some((id, i) => i !== index && id === selectedCountry);
 
         if (!isCountrySelected) {
@@ -83,13 +86,15 @@ export default function Form(props) {
     const handleSubmit = (event) => {
         event.preventDefault();
         dispatch(addActivity(activity));
-        setSuccessMessage("Activity created successfully!"); // Actualizar el mensaje de éxito
+        alert("Activity created!");
+        window.location.reload();
     };
 
     function firstLetter(str) {
         return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
     }
     const onDelete = (index) => {
+        setExtraCountries(extraCountries - 1);
         setActivity((prevActivity) => {
             const updatedIdCountries = [...prevActivity.idCountry];
                 updatedIdCountries.splice(index, 1);
@@ -106,9 +111,10 @@ export default function Form(props) {
 
     return (
         <div>
-            <form >
+            <form className="form">
+             <h2 className="h2">CREATE ACTIVITY</h2>
                 <label htmlFor="name">name:</label>
-                <input type="text" name="name" key={"name"} value={activity.name} onChange={handleFieldChange} />
+                <input type="text" name="name" key={"name"} value={activity.name} onChange={handleFieldChange} className="input-large"/>
                 {errors.name && <p style={{ color: 'red' }}>{errors.name}</p>}
 
                 <label htmlFor="difficulty">Difficulty:</label>
@@ -120,14 +126,11 @@ export default function Form(props) {
                 <label htmlFor="season">Season:</label>
                 <Select name="season" options={season} handleChange={handleFieldChange} state={activity.season} />
 
-                <label htmlFor="Countries">Country 1:</label>
-                <SelectCountries name="idCountry" onChange={handleCountry} number={0} state={activity} countries={sortedCountries} onDelete={onDelete}/>
-
-                <label htmlFor="Countries">(Optional)Country 2:</label>
-                <SelectCountries name="idCountry" onChange={handleCountry} number={1} state={activity} countries={sortedCountries} onDelete={onDelete}/>
-
-                <label htmlFor="Countries">(Optional)Country 3:</label>
-                <SelectCountries name="idCountry" onChange={handleCountry} number={2} state={activity} countries={sortedCountries} onDelete={onDelete}/>
+                {[...Array(extraCountries)].map((e, i)=><React.Fragment key={i}>
+                <label htmlFor="Countries">Country {i + 1}:</label>
+                <SelectCountries name="idCountry" onChange={handleCountry} number={i} state={activity} countries={sortedCountries} onDelete={onDelete}/>
+                </React.Fragment>)}
+                <button type="button" onClick={()=>setExtraCountries(extraCountries + 1)}>+</button>
                 
                 <button onClick={handleSubmit} disabled={!isFormValid}>Create activity</button>
                 {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}

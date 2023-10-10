@@ -23,6 +23,7 @@ export default function Nav({handlePage}){
     const base = ()=>{
       navigate("/home")
       dispatch(reset())
+      handlePage()
     }
 
      return (

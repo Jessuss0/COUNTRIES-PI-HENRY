@@ -1,0 +1,31 @@
+.h2 {
+    font-size: 24px; /* Ajusta el tamaño de la fuente según sea necesario */
+    margin-bottom: 20px; /* Ajusta el margen inferior según sea necesario */
+    color: #000000; /* Cambia el color del texto si lo deseas */
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to left, #ec8e00, #000000); 
+    align-items: center;
+    border-radius: 5px;
+    border: 1px solid black; /* Cambiado a border para especificar el estilo de borde */
+    padding: 5px; /* Añadido un relleno para espacio interno alrededor del formulario */
+    border-width: 2px;
+    margin-left: 500px;
+    margin-right: 500px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+    margin-top: 20px;
+  }
+  
+  .input-large {
+    width: 20%; /* Cambiado a 100% para ocupar el ancho del contenedor */
+    height: 20px; /* Ajustado para una altura más cómoda */
+    font-size: 16px;
+    text-align: center;
+  }
