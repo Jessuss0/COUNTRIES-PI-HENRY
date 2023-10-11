@@ -29,9 +29,15 @@ body {
   .navbar .right {
     display: flex;
     align-items: center;
-    margin-right: 40px; /* Agrega margen */
+    margin-right: 40px;
   }
   
+  .navbar .center{
+    display: flex;
+    align-items: center;
+    margin-left: 130px;
+  }
+
   .navbar input[type="search"] {
     padding: 8px;
     border: none;

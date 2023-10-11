@@ -4,10 +4,31 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url("../../../imgs/pexels-felix-mittermeier-956999.jpg");
+    background-image: url("../../../imgs/pexels-pixabay-269790.jpg");
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
   }
   
+  .startButton {
+    font-family: 'Lobster', cursive;
+    background-color: #d1ab04; 
+    color: rgb(0, 0, 0); 
+    padding: 10px 20px;
+    font-size: 20px; 
+    border: none;
+    cursor: pointer;
+    border-radius: 30px;
+  }
+  
+  .startButton:hover {
+    background-color: #e76800;
+  }
+
+  .h1 {
+    font-size: 40px; 
+    margin-bottom: 100px; 
+    color: #000000; 
+    font-family: 'Courier New', monospace;
+  }

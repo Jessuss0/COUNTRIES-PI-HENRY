@@ -1,0 +1,26 @@
+.activities-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+  }
+  
+  .activity-card {
+    border: 1px solid #080808;
+    border-radius: 30px;
+    color: rgb(255, 255, 255);
+    padding: 16px;
+    margin: 20px;
+    font-size: 20px;
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    background-image: url("../../../imgs/6ff474a25b1ea16700f9dd76f353cca5.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+  .activity-card:hover {
+    transform: scale(1.1);
+  }

@@ -16,18 +16,18 @@
     max-height: 350px;
     overflow: hidden;
     text-align: center;
-    transition: transform 0.3s ease; /* Agregamos una transición para suavizar el efecto */
+    transition: transform 0.3s ease;
   }
 
   .card:hover {
-  transform: scale(1.2); /* Al pasar el cursor, agranda un 10% */
+  transform: scale(1.2);
 }
   
 .card-image img {
   width: 100%;
   height: auto;
-  max-height: 160px; /* Ajusta según tu preferencia */
-  border: 2px solid #000; /* Agrega un borde negro de 2 píxeles */
+  max-height: 160px; 
+  border: 2px solid #000;
   border-radius: 4px;
 }
   

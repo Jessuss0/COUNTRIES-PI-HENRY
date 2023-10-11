@@ -21,7 +21,6 @@ export const allActivities = ()=>{
     return async (dispatch)=>{
         try {
             const {data} = await axios("http://localhost:3001/activities")
-            console.log(data)
             return dispatch({
                 type: GET_ALL_ACTIVITIES,
                 payload: data
@@ -108,7 +107,6 @@ export const filtActivity = (id)=>{
     return async (dispatch)=>{
         try {
             const {data} = await axios(endPoint);
-            console.log(data.Countries)
             return dispatch({
                 type: FILTER_ACTIVITY,
                 payload: data.Countries

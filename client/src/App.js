@@ -38,7 +38,7 @@ function App() {
 
   return (
     <div >
-      {location.pathname !== "/" && location.pathname !== "/activities" && !location.pathname.includes("detail") && <Nav handlePage={handlePage}/>}
+      {location.pathname !== "/" && location.pathname !== "/activities" && <Nav handlePage={handlePage}/>}
       <Routes>
 
         <Route exact path="/" element={<Landing/>}/>

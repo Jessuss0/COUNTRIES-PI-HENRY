@@ -31,7 +31,10 @@ export default function Nav({handlePage}){
           <div className="left">
             <button onClick={base}>COUNTRIES</button>
           </div>
+          <div className="center">
+
           <button onClick={()=> navigate("/activities")}>ACTIVITIES</button>
+          </div>
           <div className="right">
             <input type="search" onChange={handleChange} value={name} placeholder="Busca un país..." />
             <button onClick={handleSearch}>Buscar</button>

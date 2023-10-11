@@ -1,20 +1,45 @@
+.component {
+    min-height: 100vh;
+    
+  background: linear-gradient(to right, #000000, #e9a003);
+  -webkit-animation: nebulahero 20s infinite linear;
+}
+
+@-webkit-keyframes nebulahero {
+	0% {-webkit-filter: hue-rotate(0deg);}
+	100% {-webkit-filter: hue-rotate(-360deg);}
+}
+.home-button {
+  text-decoration: none;
+  color: #000000; /* Color del enlace */
+  font-size: 16px;
+  margin-right: 800px;
+  background-color: #acaaaa;
+}
+
+.home-link:hover {
+  text-decoration: underline; /* Subrayar cuando pasa el ratón */
+}
+
 .h2 {
-    font-size: 24px; /* Ajusta el tamaño de la fuente según sea necesario */
+  font-size: 40px; 
     margin-bottom: 20px; /* Ajusta el margen inferior según sea necesario */
     color: #000000; /* Cambia el color del texto si lo deseas */
+    text-shadow: 2px 2px 4px #000; /* Agrega una sombra al texto */
   }
   
   .form {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background: linear-gradient(to left, #ec8e00, #000000); 
     align-items: center;
     border-radius: 5px;
-    border: 1px solid black; /* Cambiado a border para especificar el estilo de borde */
+    border: 1px solid black;
     padding: 5px; /* Añadido un relleno para espacio interno alrededor del formulario */
     border-width: 2px;
     margin-left: 500px;
     margin-right: 500px;
+    font-size: 20px;
   }
   
   label {
@@ -24,8 +49,38 @@
   }
   
   .input-large {
-    width: 20%; /* Cambiado a 100% para ocupar el ancho del contenedor */
+    width: 30%; /* Cambiado a 100% para ocupar el ancho del contenedor */
     height: 20px; /* Ajustado para una altura más cómoda */
     font-size: 16px;
     text-align: center;
   }
+
+  .submit {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 10px;
+  }
+  
+  .submit:disabled {
+    background-color: #a0a0a0;
+    cursor: not-allowed;
+    color: #666;
+  }
+
+  .more {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 7px 14px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 10px;
+  }
+
+  

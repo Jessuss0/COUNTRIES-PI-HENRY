@@ -1,4 +1,4 @@
-import { SEARCH_COUNTRY, ADD_ALL_COUNTRIES, ADD_ID_COUNTRY, RESET, ADD_ACTIVITY,
+import { SEARCH_COUNTRY, ADD_ALL_COUNTRIES, ADD_ID_COUNTRY, RESET,
      FILTER_CONTINENTS, ORDER_ALPHABETICAL, ORDER_POPULATION, GET_ALL_ACTIVITIES, FILTER_ACTIVITY } from "./action.types";
 
 const initialState = {
@@ -7,8 +7,6 @@ const initialState = {
     allCountries: [],
     copiaCountries: [],
     idCountry: [],
-    activityPost: [],
-
 }
 
 const rootReducer = (state = initialState, action)=>{
@@ -28,14 +26,9 @@ const rootReducer = (state = initialState, action)=>{
         case RESET:
             return{...state, Countries: state.allCountries, copiaCountries: []}
         
-        case ADD_ACTIVITY:
-            return{...state, activityPost: action.payload}
-        
         case FILTER_CONTINENTS:
             let copia1 = state.copiaCountries.length ? [...state.copiaCountries] : [...state.allCountries]
-            let copia = copia1
-            
-            let filtrado = copia.filter((country) => country.continent === action.payload);
+            let filtrado = copia1.filter((country) => country.continent === action.payload);
             return {...state, Countries: filtrado, copiaCountries: copia1}
 
         case FILTER_ACTIVITY:

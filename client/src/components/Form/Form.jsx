@@ -23,7 +23,6 @@ export default function Form(props) {
 
     const [isFormValid, setIsFormValid] = useState(false);
     const [errors, setErrors] = useState({});
-    const [successMessage, setSuccessMessage] = useState("");
     const [extraCountries, setExtraCountries] = useState(1);
     
     const handleFieldChange = (event) => {
@@ -71,17 +70,13 @@ export default function Form(props) {
         }
     }
 
-    const refresh = async () => {
-        if (!countries.length) await dispatch(allCountries());
+    const refresh = () => {
+        if (!countries.length) dispatch(allCountries());
     };
 
     useEffect(() => {
         refresh();
     }, []);
-
-    useEffect(()=>{
-        console.log(activity)
-    },[handleChange])
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -110,8 +105,9 @@ export default function Form(props) {
     const season = ['Verano', 'Otoño', 'Invierno', 'Primavera'];
 
     return (
-        <div>
+        <div className="component">
             <form className="form">
+            <button onClick={()=> navigate("/home")} className="home-button">Back</button>
              <h2 className="h2">CREATE ACTIVITY</h2>
                 <label htmlFor="name">name:</label>
                 <input type="text" name="name" key={"name"} value={activity.name} onChange={handleFieldChange} className="input-large"/>
@@ -130,10 +126,9 @@ export default function Form(props) {
                 <label htmlFor="Countries">Country {i + 1}:</label>
                 <SelectCountries name="idCountry" onChange={handleCountry} number={i} state={activity} countries={sortedCountries} onDelete={onDelete}/>
                 </React.Fragment>)}
-                <button type="button" onClick={()=>setExtraCountries(extraCountries + 1)}>+</button>
+                <button type="button" onClick={()=>setExtraCountries(extraCountries + 1)} className="more">+</button>
                 
-                <button onClick={handleSubmit} disabled={!isFormValid}>Create activity</button>
-                {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
+                <button onClick={handleSubmit} disabled={!isFormValid} className="submit">Create activity</button>
             </form>
         </div>
     )
