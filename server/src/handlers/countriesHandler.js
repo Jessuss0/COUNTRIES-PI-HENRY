@@ -22,7 +22,7 @@ const getNameCountry = async(req, res)=>{
 
         let country = await countryByName(name);
         if(!country.length){return res.status(404).json({
-            message: "No se encontraron países que coincidan con el nombre proporcionado"})}
+            message: "There were no countries found that match the provided name"})}
         
         return res.json(country);
     } catch (error) {
@@ -33,10 +33,10 @@ const getNameCountry = async(req, res)=>{
 const getCountryById = async(req,res)=>{
     try {
         const {id} = req.params;
-        if(!id){return res.status(400).json({message: "Falta un id"})}
+        if(!id){return res.status(400).json({message: "An id is missing"})}
 
         let country = await idCountry(id);
-        if(!country){return res.status(404).json({message: "No existen paises con el ID proporcionado"})}
+        if(!country){return res.status(404).json({message: "No countries exist with the provided ID"})}
         return res.json(country);
     } catch (error) {
         res.status(500).json({error: error.message})

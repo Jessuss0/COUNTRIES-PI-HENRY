@@ -1,4 +1,4 @@
-import Activities from "../Activities/Activities";
+import Activities from "../Activities.jsx/Activities";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from "react";
@@ -33,7 +33,7 @@ export default function Detail(props){
             <h2>Population: {Country.population}</h2>
           </div>
           <div className="right-section">
-            <img src={Country.image} alt={Country.name} />
+            <img src={Country.image} alt={Country.name} className="img-detail"/>
           </div>
         </div>
       )}

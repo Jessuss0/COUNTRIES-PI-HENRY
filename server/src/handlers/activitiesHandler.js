@@ -16,7 +16,7 @@ const getAllActivities = async(req, res)=>{
 const createActivities = async(req, res)=>{
     const { name, difficulty, duration, season, idCountry} = req.body;
     try {
-        if(!name || !difficulty || !duration || !season || !idCountry){return res.status(400).json("Faltan datos")};
+        if(!name || !difficulty || !duration || !season || !idCountry){return res.status(400).json("Missing data")};
 
         let activity = await activityPost({name, difficulty, duration, season, idCountry});
         return res.json(activity);
@@ -28,7 +28,7 @@ const createActivities = async(req, res)=>{
 const getActivityById = async(req,res)=>{
     try {
         const {id} = req.params;
-        if(!id){return res.status(400).json({message: "Falta un id"})}
+        if(!id){return res.status(400).json({message: "An ID is missing"})}
 
         let response = await idActivity(id);
 

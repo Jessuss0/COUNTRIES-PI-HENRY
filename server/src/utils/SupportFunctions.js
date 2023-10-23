@@ -19,15 +19,6 @@ const countries = api.data.map((e)=>{
 console.log("DB Ok");
 }
 
-    
-    // User.findAll({
-    //     include: [{
-    //       model: Post,
-    //       through: UserPost, // Especifica la tabla intermedia
-    //       required: true, // Esto indica que es un "inner join"
-    //     }]
-
-
 module.exports={
         pedidoApi
     }

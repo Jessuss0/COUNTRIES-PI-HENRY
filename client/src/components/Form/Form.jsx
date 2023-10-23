@@ -26,8 +26,8 @@ export default function Form(props) {
     const [extraCountries, setExtraCountries] = useState(1);
     
     const handleFieldChange = (event) => {
-        handleChange(event);
         updateFormValidity();
+        handleChange(event);
     };
 
     const handleChange = (event) => {
@@ -60,13 +60,16 @@ export default function Form(props) {
         if (!isCountrySelected) {
             const updatedIdCountries = [...activity.idCountry];
             updatedIdCountries[index] = selectedCountry;
-
+            
             setActivity({
                 ...activity,
                 idCountry: updatedIdCountries
             });
 
             updateFormValidity();
+        }
+        else{
+            alert("Pais ya pickeado");
         }
     }
 
@@ -78,12 +81,20 @@ export default function Form(props) {
         refresh();
     }, []);
 
+    useEffect(() => {
+        if(errors.name)setIsFormValid(false)
+    }, [handleChange]);
+    
     const handleSubmit = (event) => {
         event.preventDefault();
         dispatch(addActivity(activity));
         alert("Activity created!");
         window.location.reload();
     };
+
+    useEffect(()=>{
+        console.log(activity)
+    },[handleCountry])
 
     function firstLetter(str) {
         return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
